@@ -1,5 +1,7 @@
 package org.launchcode.models;
 
+
+
 /**
  * Created by LaunchCode
  */
@@ -31,6 +33,9 @@ public class Job {
         coreCompetency = aSkill;
 
     }
+
+
+
 
     public String getName() {
         return name;

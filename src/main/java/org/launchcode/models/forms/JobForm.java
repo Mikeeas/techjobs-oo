@@ -15,12 +15,26 @@ import java.util.ArrayList;
  */
 public class JobForm {
 
+
+
     @NotNull
-    @Size(min=1, message = "Name may not be empty")
+    @Size(min = 1, message = "Name may not be empty")
     private String name;
 
     @NotNull
     private int employerId;
+
+    @NotNull
+    private int locationsId;
+
+    @NotNull
+    private int coreCompetenciesId;
+
+    @NotNull
+    private int positionTypesId;
+
+
+
 
     /*
         TODO #3 - Included other fields needed to create a job,
@@ -42,6 +56,9 @@ public class JobForm {
         */
 
         employers = jobData.getEmployers().findAll();
+        coreCompetencies = jobData.getCoreCompetencies().findAll();
+        positionTypes = jobData.getPositionTypes().findAll();
+        locations = jobData.getLocations().findAll();
 
     }
 
@@ -59,6 +76,30 @@ public class JobForm {
 
     public void setEmployerId(int employerId) {
         this.employerId = employerId;
+    }
+
+    public int getLocationsId() {
+        return locationsId;
+    }
+
+    public void setLocationsId(int locationsId) {
+        this.locationsId = locationsId;
+    }
+
+    public int getCoreCompetenciesId() {
+        return coreCompetenciesId;
+    }
+
+    public void setCoreCompetenciesId(int coreCompetenciesId) {
+        this.coreCompetenciesId = coreCompetenciesId;
+    }
+
+    public int getPositionTypesId() {
+        return positionTypesId;
+    }
+
+    public void setPositionTypesId(int positionTypesId) {
+        this.positionTypesId = positionTypesId;
     }
 
     public ArrayList<Employer> getEmployers() {
@@ -92,4 +133,5 @@ public class JobForm {
     public void setPositionTypes(ArrayList<PositionType> positionTypes) {
         this.positionTypes = positionTypes;
     }
+
 }
