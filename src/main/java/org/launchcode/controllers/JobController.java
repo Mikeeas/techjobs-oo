@@ -28,13 +28,16 @@ public class JobController {
 
     private JobData jobData = JobData.getInstance();
 
+
     // The detail display for a given Job at URLs like /job?id=17
     @RequestMapping(value = "", method = RequestMethod.GET)
     public String index(Model model, int id) {
+
         // TODO #1 - get the Job with the given ID and pass it into the view
 
         Job job = jobData.findById(id);
-        model.addAttribute("job", job );
+
+        model.addAttribute("job", job);
 
         return "job-detail";
     }
@@ -59,12 +62,15 @@ public class JobController {
             CoreCompetency aSkill = jobData.getCoreCompetencies().findById(jobForm.getCoreCompetenciesId());
             Job newJob = new Job(aName, aEmployer, aLocation, aPositionType, aSkill);
             jobData.add(newJob);
+            int id = newJob.getId();
+            model.addAttribute("id", id);
             model.addAttribute("job", newJob);
+
             // TODO #6 - Validate the JobForm model, and if valid, create a
             // new Job and add it to the jobData data store. Then
             // redirect to the job detail view for the new Job.
 
-            return "job-detail";
+            return "redirect:?id=" + newJob.getId();
         }
 
 }
